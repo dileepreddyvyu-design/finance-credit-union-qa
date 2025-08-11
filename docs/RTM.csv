@@ -1,0 +1,5 @@
+RequirementID,UserStory,TestCases,Automation,Status
+AUTH-001,"As a member, I can login with MFA","TC-AUTH-01,02",UI,Automated
+TRF-001,Transfer funds between own accounts,"TC-TRF-01,02",UI/API,Automated
+LOAN-001,Apply for a personal loan,"TC-LOAN-01,02",UI/API,Automated
+ACC-001,View balances & transactions,TC-ACC-01,API,Automated

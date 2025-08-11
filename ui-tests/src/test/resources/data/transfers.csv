@@ -1,0 +1,3 @@
+fromAccount,toAccount,amount,expectedToast
+Checking-001,Savings-001,50.00,Transfer successful
+Checking-001,Savings-001,0.00,Amount must be greater than 0

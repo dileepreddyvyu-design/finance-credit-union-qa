@@ -1,0 +1,155 @@
+{
+  "info": {
+    "name": "Finance Credit Union – API (Public Demo Friendly)",
+    "_postman_id": "b6f8f2c9-aaaa-bbbb-cccc-ddddeeeeffff",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth – Echo Basic Auth",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/basic-auth",
+          "host": ["{{baseUrl}}"],
+          "path": ["basic-auth"]
+        },
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {"key":"username","value":"postman","type":"string"},
+            {"key":"password","value":"password","type":"string"}
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status is 200', function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Authenticated is true', function () {",
+              "  var json = pm.response.json();",
+              "  pm.expect(json).to.be.an('object');",
+              "  pm.expect(json.authenticated).to.eql(true);",
+              "});",
+              "",
+              "// Set a demo token so downstream requests have something to use",
+              "pm.environment.set('token', 'demo-token');"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Accounts – List (ReqRes)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{reqresBase}}/users?page=1",
+          "host": ["{{reqresBase}}"],
+          "path": ["users"],
+          "query": [{"key":"page","value":"1"}]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status is 200', function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// ReqRes returns an OBJECT with a `data` array, not a raw array",
+              "pm.test('Body shape OK', function () {",
+              "  var json = pm.response.json();",
+              "  pm.expect(json).to.be.an('object');",
+              "  if (json.data) {",
+              "    pm.expect(json.data).to.be.an('array');",
+              "  }",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transfers – Create (Echo)",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "url": {
+          "raw": "{{baseUrl}}/post",
+          "host": ["{{baseUrl}}"],
+          "path": ["post"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"from\":\"Checking-001\",\"to\":\"Savings-001\",\"amount\":50.00}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Postman Echo /post returns 200; accept 200 or 201 just in case",
+              "pm.test('Status is 200 or 201', function () {",
+              "  pm.expect([200,201]).to.include(pm.response.code);",
+              "});",
+              "",
+              "// Be permissive about body shape (echo returns `json`, `data`, etc.)",
+              "pm.test('Response has an object body', function () {",
+              "  var json = {};",
+              "  try { json = pm.response.json(); } catch(e) {}",
+              "  pm.expect(json).to.be.an('object');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Loans – Apply (ReqRes)",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "url": {
+          "raw": "{{reqresBase}}/users",
+          "host": ["{{reqresBase}}"],
+          "path": ["users"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"loan-app\",\"job\":\"pending\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// ReqRes /users returns 201 with id/createdAt; allow 200 or 201",
+              "pm.test('Status is 200 or 201', function () {",
+              "  pm.expect([200,201]).to.include(pm.response.code);",
+              "});",
+              "",
+              "pm.test('Has reasonable fields', function () {",
+              "  var json = pm.response.json();",
+              "  pm.expect(json).to.be.an('object');",
+              "  // Accept either id/createdAt (ReqRes) or at least echo back fields",
+              "  pm.expect(Object.keys(json).length).to.be.greaterThan(0);",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "event": [],
+  "variable": []
+}

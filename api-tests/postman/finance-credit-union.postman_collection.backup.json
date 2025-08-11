@@ -1,0 +1,156 @@
+{
+  "info": {
+    "name": "Finance Credit Union \u2013 API",
+    "_postman_id": "b6f8f2c9-aaaa-bbbb-cccc-ddddeeeeffff",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth \u2013 Echo Basic Auth",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/basic-auth",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "basic-auth"
+          ]
+        },
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "postman",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "password",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status 200', function(){ pm.response.to.have.status(200); });",
+              "pm.test('Authenticated true', function(){ pm.expect(pm.response.json().authenticated).to.be.true; });",
+              "pm.environment.set('token', 'demo-token')"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Accounts \u2013 List (ReqRes)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{reqresBase}}/users?page=1",
+          "host": [
+            "{{reqresBase}}"
+          ],
+          "path": [
+            "users"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status 200', () => pm.response.to.have.status(200));",
+              "const arr = pm.response.json();",
+              "pm.expect(arr).to.be.an('array');"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transfers \u2013 Create (Echo)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/post",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "post"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"from\":\"Checking-001\",\"to\":\"Savings-001\",\"amount\":50.00}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status 201', () => pm.response.to.have.status(201));",
+              "pm.expect(pm.response.json()).to.have.property('id');"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Loans \u2013 Apply (ReqRes)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{reqresBase}}/users",
+          "host": [
+            "{{reqresBase}}"
+          ],
+          "path": [
+            "users"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"loan-app\",\"job\":\"pending\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status 201', () => pm.response.to.have.status(201));",
+              "pm.expect(pm.response.json().status).to.match(/pending|approved|rejected/i);"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

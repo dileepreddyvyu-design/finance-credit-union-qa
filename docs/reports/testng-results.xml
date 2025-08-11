@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-08-10T23:15:05 CDT" name="Finance Credit Union UI Suite" finished-at="2025-08-10T23:15:14 CDT" duration-ms="8923">
+    <groups>
+    </groups>
+    <test started-at="2025-08-10T23:15:05 CDT" name="Smoke" finished-at="2025-08-10T23:15:14 CDT" duration-ms="8923">
+      <class name="com.creditunion.tests.TransferTests">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.creditunion.tests.TransferTests@a9cd3b1]" started-at="2025-08-10T23:15:11 CDT" name="setup" finished-at="2025-08-10T23:15:13 CDT" duration-ms="1616" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="internalTransferShowsSuccess()[pri:0, instance:com.creditunion.tests.TransferTests@a9cd3b1]" started-at="2025-08-10T23:15:13 CDT" name="internalTransferShowsSuccess" finished-at="2025-08-10T23:15:14 CDT" duration-ms="1559" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- internalTransferShowsSuccess -->
+        <test-method is-config="true" signature="teardown(org.testng.ITestResult)[pri:0, instance:com.creditunion.tests.TransferTests@a9cd3b1]" started-at="2025-08-10T23:15:14 CDT" name="teardown" finished-at="2025-08-10T23:15:14 CDT" duration-ms="89" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=internalTransferShowsSuccess status=SUCCESS method=TransferTests.internalTransferShowsSuccess()[pri:0, instance:com.creditunion.tests.TransferTests@a9cd3b1] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- com.creditunion.tests.TransferTests -->
+      <class name="com.creditunion.tests.AuthTests">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.creditunion.tests.AuthTests@6af93788]" started-at="2025-08-10T23:15:05 CDT" name="setup" finished-at="2025-08-10T23:15:07 CDT" duration-ms="2002" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="invalidPasswordShowsError()[pri:0, instance:com.creditunion.tests.AuthTests@6af93788]" started-at="2025-08-10T23:15:07 CDT" name="invalidPasswordShowsError" finished-at="2025-08-10T23:15:08 CDT" duration-ms="798" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- invalidPasswordShowsError -->
+        <test-method is-config="true" signature="teardown(org.testng.ITestResult)[pri:0, instance:com.creditunion.tests.AuthTests@6af93788]" started-at="2025-08-10T23:15:08 CDT" name="teardown" finished-at="2025-08-10T23:15:08 CDT" duration-ms="94" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=invalidPasswordShowsError status=SUCCESS method=AuthTests.invalidPasswordShowsError()[pri:0, instance:com.creditunion.tests.AuthTests@6af93788] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.creditunion.tests.AuthTests@6af93788]" started-at="2025-08-10T23:15:08 CDT" name="setup" finished-at="2025-08-10T23:15:10 CDT" duration-ms="1565" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="validLoginLoadsDashboard()[pri:0, instance:com.creditunion.tests.AuthTests@6af93788]" started-at="2025-08-10T23:15:10 CDT" name="validLoginLoadsDashboard" finished-at="2025-08-10T23:15:11 CDT" duration-ms="1095" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validLoginLoadsDashboard -->
+        <test-method is-config="true" signature="teardown(org.testng.ITestResult)[pri:0, instance:com.creditunion.tests.AuthTests@6af93788]" started-at="2025-08-10T23:15:11 CDT" name="teardown" finished-at="2025-08-10T23:15:11 CDT" duration-ms="90" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=validLoginLoadsDashboard status=SUCCESS method=AuthTests.validLoginLoadsDashboard()[pri:0, instance:com.creditunion.tests.AuthTests@6af93788] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- com.creditunion.tests.AuthTests -->
+    </test> <!-- Smoke -->
+  </suite> <!-- Finance Credit Union UI Suite -->
+</testng-results>
