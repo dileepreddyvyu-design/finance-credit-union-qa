@@ -51,3 +51,8 @@ finance-credit-union-qa/
 ```
 
 > This is a showcase project intended for recruiters and hiring managers.
+
+## Evidence: Test Run Videos
+- ▶️ **UI test run (opens website):** [docs/test-runs/finance-cu-qa-test-run-1.mov](docs/test-runs/finance-cu-qa-test-run-1.mov)
+- ▶️ **API run (opens Newman report):** [docs/test-runs/finance-cu-qa-test-run-2.mov](docs/test-runs/finance-cu-qa-test-run-2.mov)
+
