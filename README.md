@@ -1,4 +1,4 @@
-# Finance Credit Union – Online Banking QA
+ # Finance Credit Union – Online Banking QA
 End-to-end QA portfolio project covering **Web UI** and **REST API** testing for a fictional credit union's online banking platform.  
 Stack mirrors my resume: **Java, Selenium WebDriver, TestNG, REST Assured (optional), Postman/Newman, Jenkins/GitHub Actions, SQL, Jira/Zephyr**.
 
